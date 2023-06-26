@@ -1,0 +1,26 @@
+Separate into 2 two separate modules library and app
+Add dependencies to local AS project:
+  - Right-click your app in project view and select “Open Module Settings”
+  - Click the “Dependencies” tab and then the ‘+’ button
+  - Select “Module Dependency”
+  - Select your lib4eva module and press “OK”.
+In the lib4eva module’s build.gradle file, make sure to include => apply from: 'maven-push.gradle’
+Create maven-push.gradle file in lib4eva module (see link for content)
+Modify .gitignore (see link for content)
+Modify settings.gradle with dependencies (see link for details) [already done???]
+Modify gradle.properties (see link for content)
+Create Git repo from porject folder
+Open terminal/ GitBash and on project folder
+Run GPG agent: gpg-agent -s --daemon --write-env-file --use-standard-socket (note: the last two are obsolete)
+Gernate key: gpg --full-generate-key (note: example says use gpg --gen-key but doesn't give you needed options)
+Select options:
+   -  Names/email/comments
+   -   1 (RSA)
+   -   0 (Unlimited time, no expiration date)
+   -   KEY_ID: D3E5692B041B8C0DBEF6CFBE95A81EE054703F56 (for this current session)
+Publish keys at multiple key servers:
+   -   gpg --keyserver hkp://keyserver.ubuntu.com --send-keys <KEY_ID>
+   -   gpg --keyserver hkp://pgp.mit.edu --send-keys <KEY_ID>
+   -   gpg --keyserver keys.openpgp.org --send-keys <KEY_ID>
+
+Export keys to keys folder:  gpg --export-secret-keys >~/.gnupg/secring.gpg
